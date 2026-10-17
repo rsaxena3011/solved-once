@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Solved Once is a free, offline notebook for everyday fixes. Keep the problem, what you tried, and the steps that worked.">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#285541">
+<title>Solved Once - Your personal fix notebook</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23285541'/%3E%3Cpath d='m17 32 10 10 21-22' fill='none' stroke='%23e8eedc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>:root{--paper:#f6f5ef;--white:#fffefb;--ink:#203d33;--muted:#65766b;--line:#e1e5db;--green:#285541;--green-dark:#183f30;--sage:#e8eedc;--orange:#b95831;--sand:#f9ead9;--radius:14px;--shadow:0 18px 60px #203d3318;color-scheme:light;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);font-size:14px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper)}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.45;cursor:not-allowed}a{color:var(--green)}button,a,input,textarea,select{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #a3bf79;outline-offset:3px}button{transition:background .15s,transform .15s}button:active:not(:disabled){transform:translateY(1px)}[hidden]{display:none!important}h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.035em}svg{width:20px;height:20px;flex-shrink:0;vertical-align:middle}input,textarea,select{color:var(--ink);max-width:100%;background:var(--white)}input::placeholder,textarea::placeholder{color:#8c968c}button{border:0;background:none}.skip{position:fixed;top:-60px;left:20px;z-index:100;padding:12px 20px;background:var(--ink);color:white}.skip:focus{top:12px}.app{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}.sidebar{background:#f0f2e9;border-right:1px solid var(--line);padding:32px 22px;display:flex;flex-direction:column;gap:32px;position:sticky;top:0;height:100vh;overflow:auto}.wordmark{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:760;letter-spacing:-.055em;white-space:nowrap}.mark{display:grid;place-items:center;flex-shrink:0;background:var(--green);color:#e8efda;width:33px;height:33px;border-radius:10px;transform:rotate(-5deg)}.mark svg{width:23px;height:23px;transform:rotate(5deg)}.brand-caption{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:11px 0 0 43px}.nav{display:grid;gap:5px}.nav button{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 12px;border-radius:9px;text-align:left;color:var(--muted);font-size:13px;font-weight:550}.nav button:hover{background:#e5e9df}.nav button.active{background:var(--green);color:#fff}.nav button .count{margin-left:auto;font-size:11px;opacity:.8}.nav button svg{width:18px;height:18px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:13px}.categories{display:grid;gap:3px}.categories button{font-size:12px;padding:9px 11px;text-align:left;border-radius:7px;display:flex;align-items:center;gap:9px;color:var(--muted)}.categories button:hover,.categories button.active{background:#e0e7d6;color:var(--ink)}.dot{width:7px;height:7px;border-radius:50%;background:#87a69a}.categories button:nth-child(2) .dot{background:#d6a46f}.categories button:nth-child(3) .dot{background:#9d9dc7}.categories button:nth-child(4) .dot{background:#c39d9b}.sidebar-bottom{margin-top:auto}.backup-note{padding:15px;background:#e4ead9;border-radius:12px;margin-bottom:16px}.backup-note p{font-size:12px;line-height:1.6;margin:0 0 12px}.backup-note button{font-size:12px;font-weight:650;padding:0;color:var(--green);display:flex;align-items:center;gap:7px}.small-tools{display:flex;gap:8px}.small-tools button{padding:6px 0;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}.small-tools button+button{margin-left:10px}.small-tools svg{width:15px;height:15px}.workspace{min-width:0;padding:36px 38px 22px;max-width:1800px;width:100%;margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:29px}.topbar h1{font-weight:620;font-size:30px;margin:0 0 7px}.topbar p{font-size:13px;color:var(--muted);margin:0}.topbar-actions{display:flex;align-items:center;gap:14px}.local-pill{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;white-space:nowrap}.local-pill .dot{background:#7b9b66;width:6px;height:6px}.btn{border-radius:9px;padding:11px 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:12px;line-height:1.4;min-height:40px;text-decoration:none;white-space:nowrap}.btn svg{width:16px;height:16px}.btn.primary{color:#fff;background:var(--green)}.btn.primary:hover{background:var(--green-dark)}.btn.secondary{background:var(--white);border:1px solid #d9dfd1}.btn.secondary:hover{background:#edf1e7}.btn.ghost:hover{background:#e9ede3}.btn.danger{background:#9d4035;color:white}.btn.small{padding:7px 11px;min-height:34px}.icon-btn{width:34px;height:34px;border-radius:8px;display:inline-grid;place-items:center;flex-shrink:0}.icon-btn:hover{background:#e8ede2}.icon-btn svg{width:17px;height:17px}.icon-btn.danger{color:#aa4f3a}.search-row{display:flex;gap:14px;align-items:center;margin-bottom:18px}.searchbox{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid #dde2d7;border-radius:10px;padding:0 13px;flex:1;min-width:0}.searchbox svg{color:#829083;width:18px;height:18px}.searchbox input{height:44px;width:100%;border:0;outline:0;background:transparent;font-size:13px;min-width:0}.searchbox:focus-within{outline:2px solid #9fb88c;outline-offset:1px}.searchbox kbd{font-size:10px;border:1px solid var(--line);padding:3px 5px;border-radius:4px;color:#859181;white-space:nowrap}.sort-wrap{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}.sort-wrap select{padding:10px 26px 10px 8px;border:0;background:transparent;font-size:12px;max-width:180px}.active-filter{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:15px}.active-filter button{color:var(--green);font-weight:650;text-decoration:underline;text-underline-offset:3px}.notice{padding:12px 15px;border-radius:9px;margin-bottom:18px;font-size:12px;line-height:1.6;background:var(--sand);color:#795031;border:1px solid #e9d7bd;display:flex;align-items:center;justify-content:space-between;gap:12px}.notice.demo{background:#e8eedf;color:var(--green);border-color:#d8e1ca}.notice button{font-size:12px;font-weight:650;text-decoration:underline;white-space:nowrap}.board{display:grid;grid-template-columns:minmax(240px,330px) minmax(0,1fr);gap:22px;align-items:start}.fix-column{min-width:0}.list-heading{display:flex;justify-content:space-between;align-items:center;margin:0 0 12px;padding:0 3px;color:var(--muted);font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:650}.fix-list{display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 240px);overflow-y:auto;padding:2px 3px 8px 0;scrollbar-width:thin}.fix-card{border:1px solid var(--line);border-radius:12px;padding:17px;background:var(--white);text-align:left;width:100%;position:relative}.fix-card:hover{border-color:#b0c2a5;background:#fcfdf8}.fix-card.selected{background:#eaf0df;border-color:#90a977;box-shadow:inset 3px 0 0 #6f8d59}.fix-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:650;padding:4px 8px;border-radius:5px;background:#e6eedb;color:#426438;line-height:1.2}.badge.open{background:#f4e8d8;color:#906134}.badge svg{width:11px;height:11px}.fix-card .pin-icon{color:#6b8256;width:13px;height:13px}.fix-card h3{font-size:15px;line-height:1.4;font-weight:650;margin:0 0 7px;overflow-wrap:anywhere}.fix-card .item{font-size:11px;color:var(--muted);margin:0 0 12px;overflow-wrap:anywhere}.fix-card .excerpt{font-size:12px;line-height:1.6;color:#6d7a6c;margin:0 0 15px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}.fix-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:#809077}.fix-card-foot .mini-icons{display:flex;align-items:center;gap:5px}.fix-card-foot svg{width:12px;height:12px}.detail{background:var(--white);border:1px solid var(--line);border-radius:16px;min-width:0;min-height:540px;box-shadow:0 5px 18px #29482b03;overflow:hidden}.detail-inner{padding:28px 30px}.detail-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.detail-tools{display:flex;gap:4px;align-items:center}.detail-tools .is-pinned{background:var(--sage);color:var(--green)}.detail h2{font-size:29px;line-height:1.2;font-weight:650;margin:0 0 12px;overflow-wrap:anywhere}.detail-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:17px}.detail-meta svg{width:14px;height:14px}.tag-list{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:25px}.tag{font-size:10px;color:#6b7b61;border:1px solid #dfe5d4;border-radius:5px;padding:4px 7px;overflow-wrap:anywhere}.section-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin:0 0 10px}.problem-box{margin:24px 0}.prose{font-size:13px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.solution-box{background:#edf2e4;border:1px solid #dde6ce;border-radius:12px;padding:22px;margin:24px 0}.solution-heading{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;margin:0 0 13px;color:#46653a}.solution-heading svg{width:18px;height:18px}.step-list{list-style:none;counter-reset:step;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:15px}.step-list>li{display:grid;grid-template-columns:25px minmax(0,1fr);gap:11px;counter-increment:step}.step-list>li:before{content:counter(step,decimal-leading-zero);font-size:11px;font-weight:700;color:#6e835c;padding-top:3px}.step-list .prose{font-size:12px}.steps-check{width:22px;height:22px;border-radius:6px;border:1px solid #aebe9e;background:white;display:grid;place-items:center;font-size:10px;color:#6d835c}.steps-check.done{background:var(--green);border-color:var(--green);color:white}.step-list.follow>li:before{display:none}.step-list.follow>li{grid-template-columns:25px minmax(0,1fr)}.step-list .completed>.prose{text-decoration:line-through;color:#7c8a73}.followbar{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #d4dfc5;padding-top:15px;margin-top:18px;font-size:11px;color:#71815e}.followbar button{font-size:11px;font-weight:650;color:var(--green);padding:0}.attempt-section{margin-top:25px;border-top:1px solid var(--line);padding-top:21px}.attempt-section summary{font-size:12px;font-weight:650;cursor:pointer;display:flex;align-items:center;gap:8px;list-style:none}.attempt-section summary:after{content:'+';margin-left:auto;font-size:18px;font-weight:400;color:var(--muted)}.attempt-section[open] summary:after{content:'−'}.attempt-row{display:grid;grid-template-columns:21px minmax(0,1fr);gap:10px;padding-top:18px}.outcome-dot{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:#f0e6e0;color:#a16a50;font-size:12px}.outcome-dot.worked{color:#4c7143;background:#e3edd7}.outcome-dot.partial{color:#9b7b2f;background:#f5edcf}.attempt-row strong{font-size:10px;font-weight:650;color:#8d7462;display:block;margin-bottom:5px}.attempt-row .prose{font-size:12px}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:20px}.gallery figure{margin:0;min-width:0}.gallery button{padding:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#f0f2eb;display:block;width:100%}.gallery img{width:100%;height:115px;object-fit:contain;display:block}.gallery figcaption{font-size:10px;color:var(--muted);margin-top:7px;line-height:1.5;overflow-wrap:anywhere}.detail-footer{border-top:1px solid var(--line);padding:15px 29px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fbfcf7}.detail-footer .updated{font-size:10px;color:#85917e}.detail-footer-actions{display:flex;gap:3px}.empty{background:var(--white);border:1px solid var(--line);border-radius:16px;text-align:center;padding:60px 24px 42px;position:relative;overflow:hidden}.empty-art{width:170px;height:135px;position:relative;margin:0 auto 28px}.paper-card{position:absolute;width:125px;height:91px;border:1px solid #d3ddc7;box-shadow:0 8px 18px #243e3010;border-radius:11px;background:#f9f6ed;top:10px;left:10px;transform:rotate(-11deg)}.paper-card:nth-child(2){background:#e7ede0;left:28px;top:20px;transform:rotate(5deg)}.paper-card:last-child{background:#dce7c9;left:35px;top:32px;transform:rotate(-2deg);display:grid;place-items:center;color:#4f6e3e}.paper-card svg{width:42px;height:42px;stroke-width:1.5}.empty h2{font-size:30px;font-weight:600;line-height:1.2;margin-bottom:13px}.empty>p{font-size:13px;line-height:1.8;color:var(--muted);max-width:420px;margin:0 auto 23px}.empty-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.empty-bottom{display:flex;gap:25px;justify-content:center;margin-top:43px;padding-top:23px;border-top:1px solid #edf0e7;color:#7e8c75;font-size:11px}.empty-bottom span{display:flex;gap:7px;align-items:center}.empty-bottom svg{width:15px;height:15px}.nothing{text-align:center;padding:35px 16px;color:var(--muted);font-size:12px;line-height:1.7}.nothing svg{width:28px;height:28px;margin-bottom:12px;color:#94a286}.nothing h3{font-size:16px;color:var(--ink);margin-bottom:8px}.app-footer{display:flex;justify-content:space-between;font-size:10px;color:#94a08c;margin-top:22px;gap:10px}.app-footer button{font-size:10px;color:#7a896f;text-decoration:underline;text-underline-offset:3px}.mobile-back{display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Dialogs */
+dialog{border:1px solid #dce1d3;border-radius:16px;background:var(--white);color:var(--ink);box-shadow:var(--shadow);padding:0;max-width:calc(100vw - 32px);max-height:90dvh;overflow:auto}dialog::backdrop{background:#15291e65;backdrop-filter:blur(3px)}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 25px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--white);z-index:2}.modal-head h2{margin:0;font-size:21px;font-weight:650}.modal-head p{font-size:11px;color:var(--muted);margin:5px 0 0}.modal-body{padding:25px}.modal-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:16px 25px;background:#f7f9f2;position:sticky;bottom:0;z-index:2}.modal-footer .actions{display:flex;gap:8px}.modal-footer small{font-size:11px;color:var(--muted)}#editor{width:820px}.form-section{margin-bottom:29px}.form-section+.form-section{padding-top:22px;border-top:1px solid var(--line)}.form-section h3{font-size:15px;font-weight:650;margin:0 0 6px}.form-section .hint{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;min-width:0}.field label,.field>.label{font-size:11px;font-weight:650}.field input,.field textarea,.field select{border:1px solid #d7dfd0;border-radius:8px;padding:10px 12px;font-size:12px;width:100%;line-height:1.5}.field textarea{min-height:80px;resize:vertical}.field .hint{margin:0;font-size:10px}.field.full{grid-column:1/-1}.input-note{color:#87927f;font-size:10px;font-weight:400;margin-left:5px}.section-head{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:14px}.section-head h3{margin:0}.editor-row{display:flex;align-items:start;gap:10px;margin:10px 0;padding:12px;border:1px solid var(--line);border-radius:9px;background:#fafbf6}.editor-row .field{margin:0;flex:1}.editor-row textarea{min-height:60px;line-height:1.5}.editor-row .outcome-select{width:130px;padding:10px 5px;border:1px solid #d8e0ce;border-radius:7px;font-size:11px;margin-top:21px}.step-number{font-size:11px;font-weight:700;min-width:18px;color:#82916f;margin-top:31px}.row-controls{display:flex;flex-direction:column;padding-top:19px;gap:0}.row-controls .icon-btn{width:28px;height:25px}.row-controls svg{width:14px;height:14px}.solution-editor{background:#eff3e8;border-radius:11px;padding:18px;border:1px solid #dce6ce}.solution-editor .field textarea{background:#fffefa}.check-label{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;margin-top:16px;line-height:1.5;cursor:pointer}.check-label input{width:16px;height:16px;accent-color:var(--green)}.upload-area{border:1px dashed #aeba9f;border-radius:10px;padding:18px;text-align:center;background:#f7f9f2;cursor:pointer}.upload-area.drag{background:#e3edda;border-color:var(--green)}.upload-area>svg{color:#7e946e;margin-bottom:9px}.upload-area p{font-size:12px;margin:0 0 6px;font-weight:550}.upload-area small{font-size:10px;color:var(--muted);line-height:1.6}.edit-images{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:16px}.edit-image{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0}.edit-image-preview{position:relative;background:#eef1e8}.edit-image img{width:100%;height:140px;object-fit:contain;display:block}.edit-image .remove-image{position:absolute;right:6px;top:6px;background:var(--white)}.edit-image-inputs{padding:10px}.edit-image .field{margin-bottom:8px}.edit-image .field:last-child{margin-bottom:0}.edit-image input,.edit-image select{font-size:11px;padding:7px}.form-error{color:#93472e;background:#faede4;border:1px solid #ecd1bd;border-radius:8px;font-size:12px;padding:12px;line-height:1.5;margin:15px 0 0}.dialog-sm{width:480px}.dialog-sm p{font-size:13px;line-height:1.7;color:var(--muted)}.dialog-sm .modal-body>:last-child{margin-bottom:0}.dialog-sm .modal-footer{justify-content:flex-end}#helpDialog{width:640px}.help-section{padding-bottom:17px;margin-bottom:17px;border-bottom:1px solid var(--line)}.help-section:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}.help-section h3{font-size:14px;margin-bottom:8px}.help-section p,.help-section li{font-size:12px;line-height:1.75;color:var(--muted)}.help-section ol{padding-left:20px;margin:0}.help-section p:last-child{margin-bottom:0}.help-section kbd{font-size:10px;padding:2px 5px;border-radius:4px;background:#edf1e5;border:1px solid #dbe2ce}.backup-stat{padding:15px;background:#edf2e4;border-radius:10px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;font-size:12px}.backup-stat strong{font-size:23px}.backup-action{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}.backup-action h3{font-size:14px;margin-bottom:8px}.backup-action p{font-size:12px}.restore-summary{border:1px solid #cbd9be;background:#f0f5e8;padding:15px;border-radius:10px;margin-top:15px}.restore-summary p{font-size:12px;line-height:1.7}.restore-summary .btn{margin-top:4px}#imageDialog{width:1100px;background:#fcfdf8}#imageDialog .modal-body{padding:12px;display:grid;place-items:center}#imageDialog img{max-width:100%;max-height:70dvh;object-fit:contain}.image-caption{padding:12px 23px 20px;margin:0;font-size:12px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:30;border-radius:10px;padding:12px 16px;background:#244a3c;color:white;box-shadow:var(--shadow);font-size:12px;max-width:calc(100vw - 32px);display:flex;align-items:center;gap:15px;line-height:1.5}.toast button{font-size:12px;font-weight:700;color:#e1edc7;text-decoration:underline;white-space:nowrap}.toast[hidden]{display:none}.print-root{display:none}
+@media(min-width:1500px){.workspace{padding:40px 50px}.board{grid-template-columns:360px minmax(0,1fr)}.detail-inner{padding:32px 40px}.detail h2{font-size:32px}}
+@media(max-width:1150px){.app{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:28px 15px}.wordmark{font-size:20px;gap:7px}.brand-caption{margin-left:38px;font-size:9px}.workspace{padding:28px 24px}.local-pill{display:none}.board{grid-template-columns:265px minmax(0,1fr);gap:14px}.detail-inner{padding:24px 22px}.detail h2{font-size:25px}.detail-footer{padding:13px 18px}.detail-footer .updated{display:none}.detail-footer-actions{margin-left:auto}.categories button{font-size:11px}.empty h2{font-size:28px}}
+@media(max-width:930px){.app{grid-template-columns:170px minmax(0,1fr)}.sidebar{padding:25px 12px;gap:25px}.wordmark{font-size:18px}.mark{width:28px;height:28px;border-radius:8px}.brand-caption{font-size:8px;letter-spacing:.1em;margin-left:35px}.board{display:block}.detail{display:none}.fix-list{max-height:none;display:grid;grid-template-columns:1fr 1fr}.board.detail-open .fix-column{display:none}.board.detail-open .detail{display:block}.mobile-back{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:0;margin-right:8px}.mobile-back svg{width:14px;height:14px}.detail-toolbar{margin-bottom:20px}.topbar h1{font-size:26px}.topbar p{font-size:12px}.searchbox kbd{display:none}.sort-wrap>span{display:none}.sort-wrap select{font-size:11px;max-width:135px}.detail{min-height:450px}}
+@media(max-width:650px){.app{display:block}.sidebar{position:static;height:auto;padding:19px 18px 12px;gap:15px;border-right:0;border-bottom:1px solid var(--line)}.brand-caption{display:none}.wordmark{font-size:22px}.mark{width:30px;height:30px}.nav{display:flex;gap:4px;overflow:auto}.nav button{font-size:11px;padding:9px 10px;min-height:36px;white-space:nowrap;flex:1;justify-content:center;gap:6px}.nav button svg{width:14px;height:14px}.nav .count{display:none}.category-section,.sidebar-bottom{display:none}.workspace{padding:24px 16px 18px}.topbar{margin-bottom:20px;gap:10px}.topbar h1{font-size:26px}.topbar p{max-width:225px;line-height:1.5}.topbar .btn{padding:10px 12px}.topbar-actions{gap:0}.search-row{gap:5px;margin-bottom:17px}.searchbox{padding:0 10px}.searchbox input{font-size:12px}.sort-wrap select{padding:8px 14px 8px 2px;max-width:108px;font-size:10px}.fix-list{grid-template-columns:1fr;gap:9px}.fix-card{padding:16px}.fix-card h3{font-size:16px}.fix-card .excerpt{margin-bottom:12px}.fix-card-head{margin-bottom:10px}.detail-inner{padding:22px 19px}.detail h2{font-size:27px}.detail-tools .btn{padding:7px 9px}.solution-box{padding:18px;margin-top:22px}.empty{padding:36px 18px 25px}.empty-art{transform:scale(.9);margin-bottom:17px}.empty h2{font-size:28px}.empty-bottom{gap:13px;margin-top:30px;font-size:10px;flex-wrap:wrap}.empty>p{font-size:12px}.app-footer{font-size:9px;margin-top:19px}.app-footer button{font-size:10px}.notice{font-size:11px;align-items:start}.notice button{font-size:11px}.form-grid{grid-template-columns:1fr;gap:0}.form-section{margin-bottom:22px}.modal-head,.modal-body{padding:20px}.modal-footer{padding:14px 18px;gap:8px}.modal-footer small{max-width:135px;font-size:10px}.modal-footer .btn{font-size:11px;padding:9px 12px}.editor-row{flex-wrap:wrap;padding:10px;gap:7px}.editor-row .outcome-select{margin-top:0;margin-left:0;order:3;width:100%}.editor-row textarea{min-height:75px}.editor-row .field{min-width:calc(100% - 60px)}.editor-row.step-row .field{min-width:calc(100% - 90px)}.editor-row.step-row .row-controls{padding-top:20px}.edit-images{grid-template-columns:1fr}.edit-image img{height:170px}.section-head{align-items:flex-start}.section-head .btn{white-space:nowrap}.solution-editor{padding:13px}dialog{max-width:calc(100vw - 20px);max-height:94dvh}.dialog-sm{width:100%}.help-section p,.help-section li{font-size:12px}.backup-stat{gap:15px}.toast{bottom:12px;width:max-content}.topbar .btn span{display:none}.topbar .btn{width:42px;height:42px;padding:0}.topbar .btn svg{width:20px;height:20px}.detail-footer{padding:12px 15px}.detail-footer-actions{gap:2px}.detail-footer .btn{font-size:11px}.followbar{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{body{background:#fff}.app,dialog,.toast{display:none!important}.print-root{display:block;color:#20392f;font:11pt/1.6 system-ui,sans-serif}.print-root header{margin-bottom:20px}.print-root .brand{font-size:10px;letter-spacing:.12em;margin-bottom:18px}.print-root h1{font-size:25pt;line-height:1.2;margin:12px 0}.print-root .meta,.print-root footer{font-size:9pt;color:#667164}.print-root section{margin:22px 0}.print-root h2{font-size:11pt;letter-spacing:.08em;text-transform:uppercase;break-after:avoid}.print-root .solution{border:1px solid #d7dfcd;padding:16px}.print-root .pre{white-space:pre-wrap;overflow-wrap:anywhere}.print-root p{margin:6px 0}.print-root img{max-width:100%;max-height:115mm;object-fit:contain}.print-root figure{margin:16px 0;break-inside:avoid}.print-root figcaption{font-size:9pt;color:#667164}.print-root li{padding:5px 0}.print-root .attempts{list-style:none;padding:0}.print-root .attempts strong{font-size:9pt}.print-root footer{border-top:1px solid #ddd;padding-top:15px;margin-top:24px}@page{margin:15mm}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to notebook</a>
+<div class="app">
+  <aside class="sidebar" aria-label="Notebook navigation">
+    <div><div class="wordmark"><span class="mark" data-icon="check"></span>Solved Once<span class="sr-only">, your personal fix notebook</span></div><p class="brand-caption" aria-hidden="true">A little less figuring out</p></div>
+    <nav class="nav" aria-label="Fix status">
+      <button type="button" class="active" data-view="all" aria-current="page"><span data-icon="book"></span>All fixes<span class="count" id="allCount">0</span></button>
+      <button type="button" data-view="solved"><span data-icon="circleCheck"></span>Solved<span class="count" id="solvedCount">0</span></button>
+      <button type="button" data-view="open"><span data-icon="clock"></span>In progress<span class="count" id="openCount">0</span></button>
+      <button type="button" data-view="pinned"><span data-icon="pin"></span>Pinned<span class="count" id="pinnedCount">0</span></button>
+    </nav>
+    <section class="category-section"><h2 class="eyebrow">Categories</h2><div class="categories" id="categoryNav"></div></section>
+    <div class="sidebar-bottom">
+      <div class="backup-note"><p>Your fixes are worth keeping.<br>Take a backup with you.</p><button type="button" data-action="backup"><span data-icon="download"></span>Back up & restore<span aria-hidden="true">↗</span></button></div>
+      <div class="small-tools"><button type="button" data-action="help"><span data-icon="help"></span>Quick guide</button><button type="button" data-action="demo">Examples</button></div>
+    </div>
+  </aside>
+  <main id="main" class="workspace" tabindex="-1">
+    <header class="topbar"><div><h1 id="viewTitle">Your fix notebook</h1><p id="viewSubtitle">A home for the things you figured out.</p></div><div class="topbar-actions"><span class="local-pill" id="storagePill"><span class="dot"></span>Opening notebook…</span><button class="btn primary" type="button" id="newFix"><span data-icon="plus"></span><span>New fix</span><span class="sr-only">Add a new fix</span></button></div></header>
+    <div class="notice" id="storageNotice" role="status" hidden><span id="storageMessage"></span><button type="button" data-action="backup">Back up</button></div>
+    <div class="notice demo" id="demoNotice" hidden><span><strong>Example notebook.</strong> These are fictional personal notes. Your saved fixes are separate.</span><button type="button" id="leaveDemo">My notebook</button></div>
+    <div class="search-row"><label class="searchbox"><span data-icon="search"></span><span class="sr-only">Search fixes</span><input type="search" id="searchInput" placeholder="Search a problem, device, or solution…" autocomplete="off" maxlength="250"><kbd aria-hidden="true">Ctrl K</kbd></label><label class="sort-wrap"><span>Sort</span><span class="sr-only">Sort fixes</span><select id="sortInput"><option value="updated">Recently updated</option><option value="title">Title A–Z</option><option value="oldest">Oldest updated</option></select></label></div>
+    <div id="activeFilter" class="active-filter" hidden><span id="filterText"></span><button id="clearFilters" type="button">Clear filters</button></div>
+    <div id="welcome" class="empty" hidden><div class="empty-art" aria-hidden="true"><div class="paper-card"></div><div class="paper-card"></div><div class="paper-card"><span data-icon="check"></span></div></div><h2>Figured it out?<br>Keep the answer.</h2><p>Save the problem, what you tried, and the steps that worked. Next time, pick up where you left off.</p><div class="empty-actions"><button class="btn primary" type="button" data-action="new"><span data-icon="plus"></span>Add your first fix</button><button class="btn secondary" type="button" data-action="demo">Explore examples<span aria-hidden="true">↗</span></button></div><div class="empty-bottom"><span><span data-icon="lock"></span>Stays on your device</span><span><span data-icon="wifiOff"></span>Works offline</span><span><span data-icon="heart"></span>Always free</span></div></div>
+    <div class="board" id="board" hidden><section class="fix-column" aria-label="Saved fixes"><div class="list-heading"><span id="resultCount" aria-live="polite">0 fixes</span><span>Your collection</span></div><div class="fix-list" id="fixList"></div></section><article class="detail" id="detail" aria-label="Fix details"></article></div>
+    <footer class="app-footer"><span id="footerStatus">Free, offline & yours.</span><span><button type="button" data-action="backup">Backup & restore</button> &nbsp;·&nbsp; <button type="button" data-action="help">Help</button></span></footer>
+  </main>
+</div>
+
+<dialog id="editor" aria-labelledby="editorTitle">
+ <form id="fixForm">
+  <header class="modal-head"><div><h2 id="editorTitle">Add a fix</h2><p>Keep the useful details. Your future self will thank you.</p></div><button class="icon-btn" type="button" id="closeEditor" aria-label="Close editor"><span data-icon="x"></span></button></header>
+  <div class="modal-body">
+   <section class="form-section"><h3>The basics</h3><p class="hint">Give it a title you’ll remember searching for.</p>
+    <div class="field"><label for="fixTitle">Title <span class="input-note">Required</span></label><input id="fixTitle" name="title" maxlength="160" required placeholder="e.g. Printer keeps showing offline" autocomplete="off"></div>
+    <div class="form-grid"><div class="field"><label for="fixItem">Item, device, or app</label><input id="fixItem" maxlength="160" placeholder="e.g. Home office printer"></div><div class="field"><label for="fixCategory">Category</label><select id="fixCategory"></select></div></div>
+    <div class="field"><label for="fixTags">Tags <span class="input-note">Optional · separate with commas</span></label><input id="fixTags" maxlength="327" placeholder="printer, wifi, home office"><p class="hint">Up to 8 tags, 40 characters each.</p></div>
+    <div class="field"><label for="fixProblem">What was happening?</label><textarea id="fixProblem" maxlength="12000" placeholder="What did you notice? Any error message or useful context?"></textarea></div>
+   </section>
+   <section class="form-section"><div class="section-head"><h3>What you tried</h3><button class="btn secondary small" type="button" id="addAttempt"><span data-icon="plus"></span>Add attempt</button></div><p class="hint">Keep unsuccessful attempts too, so you don’t repeat them.</p><div id="attemptEditor"></div><p class="hint" id="noAttempts">No attempts yet. Add one whenever you try something.</p></section>
+   <section class="form-section"><div class="section-head"><h3>The working solution</h3><button class="btn secondary small" type="button" id="addStep"><span data-icon="plus"></span>Add step</button></div><div class="solution-editor"><div class="field"><label for="fixSolution">What finally worked?</label><textarea id="fixSolution" maxlength="12000" placeholder="The useful part: what solved it, and why?"></textarea></div><div id="stepEditor"></div><p class="hint" id="noSteps">Add numbered steps if you’ll want to follow this again.</p><label class="check-label"><input type="checkbox" id="fixSolved">Solved - I have a working solution</label></div></section>
+   <section class="form-section"><h3>Screenshots & photos</h3><p class="hint">Attach up to 6 images. Add a caption or connect an image to a step.</p><div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Add screenshots or photos. Click, drop images, or paste an image."><span data-icon="image"></span><p id="uploadText">Click to add, drop here, or paste an image</p><small>PNG, JPG, WebP · up to 15 MB each<br>Images are resized to 1,600 px for a compact notebook.</small></div><input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden><div class="edit-images" id="imageEditor"></div><div class="form-error" id="imageError" role="alert" hidden></div></section>
+   <div class="form-error" id="formError" role="alert" hidden></div>
+  </div>
+  <footer class="modal-footer"><small id="draftStatus">Saved only when you click Save fix.</small><div class="actions"><button class="btn secondary" type="button" id="cancelEditor">Cancel</button><button class="btn primary" type="submit" id="saveFix"><span data-icon="check"></span>Save fix</button></div></footer>
+ </form>
+</dialog>
+
+<dialog id="backupDialog" class="dialog-sm" aria-labelledby="backupTitle"><header class="modal-head"><div><h2 id="backupTitle">Keep a copy.</h2><p>Your fixes, screenshots, and solution steps.</p></div><button class="icon-btn" type="button" data-close="backupDialog" aria-label="Close backup"><span data-icon="x"></span></button></header><div class="modal-body"><div class="backup-stat"><span><strong id="backupCount">0</strong> saved fixes</span><span id="backupSize">0 KB</span></div><section class="backup-action"><h3>Export your notebook</h3><p>Download one JSON file with all your saved fixes and images. Keep it somewhere safe, especially before moving the app or clearing browser data.</p><button class="btn primary" type="button" id="exportBackup"><span data-icon="download"></span>Export backup</button><p id="lastBackup" style="font-size:10px;margin:10px 0 0"></p></section><section><h3 style="font-size:14px">Restore or merge a backup</h3><p>Your current fixes stay. Identical records are skipped. Different versions are added as separate copies for you to review.</p><button class="btn secondary" type="button" id="chooseBackup"><span data-icon="upload"></span>Choose backup file</button><input type="file" id="backupInput" accept=".json,application/json" hidden><div class="restore-summary" id="restoreSummary" hidden><p id="restoreText"></p><button class="btn primary small" type="button" id="confirmRestore">Merge into my notebook</button><button class="btn ghost small" type="button" id="cancelRestore">Cancel</button></div><div class="form-error" id="backupError" role="alert" hidden></div></section></div></dialog>
+
+<dialog id="helpDialog" aria-labelledby="helpTitle"><header class="modal-head"><div><h2 id="helpTitle">A little less figuring out.</h2><p>Solved Once · Version 1.0.0 · Free & open source</p></div><button class="icon-btn" type="button" data-close="helpDialog" aria-label="Close guide"><span data-icon="x"></span></button></header><div class="modal-body"><section class="help-section"><h3>From a problem to a reusable fix</h3><ol><li>Choose <strong>New fix</strong>. Give the problem a memorable title.</li><li>Record what you tried and whether it worked.</li><li>Add the solution and optional numbered steps. Mark it solved.</li><li>Click <strong>Save fix</strong>. Search for it whenever the problem returns.</li></ol><p><button class="btn secondary small" type="button" id="helpExamples">Explore fictional examples</button></p></section><section class="help-section"><h3>Your notebook lives in this browser</h3><p>Saved fixes use this browser’s local storage. They are not written into the app’s HTML file. Use the same browser, profile, and file location to return to them. Private browsing, clearing site data, moving or renaming the HTML file, or changing browsers may make those notes unavailable.</p><p><strong>Export a backup regularly.</strong> Restore the JSON file to move your notes to another browser or computer. Screenshots are included. The app makes no network requests and has no account, analytics, or cloud sync. Files and backups are not password encrypted.</p></section><section class="help-section"><h3>Follow, print, or share a solution</h3><p>Use <strong>Follow steps</strong> to tick through a fix. Checkmarks reset when you leave that fix and don’t change your notes. <strong>Print</strong> opens the browser’s print dialog, where available you can select Save as PDF. <strong>Save card</strong> downloads a standalone HTML instruction card with its images. That card is a readable copy, not an editable notebook backup.</p></section><section class="help-section"><h3>Small shortcuts, useful limits</h3><p><kbd>Ctrl</kbd> / <kbd>⌘</kbd> + <kbd>K</kbd> searches your notebook. <kbd>Ctrl</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd> saves an open editor. <kbd>Esc</kbd> closes a dialog, with a prompt if you have unsaved changes.</p><p>Up to 500 fixes, 30 attempts and 30 steps per fix, 6 images per fix, and a 50 MB notebook. Images up to 15 MB are resized to at most 1,600 px. A backup merge keeps both versions when the same fix has changed; review duplicates afterward.</p></section><section class="help-section"><h3>Using the app</h3><p>Extract the ZIP, then open <strong>index.html</strong> in a modern desktop browser with JavaScript enabled. Chrome, Edge, Firefox, and Safari are intended targets; storage behavior for local HTML files varies. A warning appears if browser storage cannot be opened. In that mode, export your work before closing the tab.</p><p>Example fixes are fictional demonstrations, not device-specific instructions. Your own notes stay separate unless you choose to copy an example.</p></section></div></dialog>
+
+<dialog id="confirmDialog" class="dialog-sm" aria-labelledby="confirmTitle"><div class="modal-body"><h2 id="confirmTitle" style="font-size:23px"></h2><p id="confirmText"></p></div><footer class="modal-footer"><button class="btn secondary" id="confirmNo" type="button">Cancel</button><button class="btn primary" id="confirmYes" type="button">Continue</button></footer></dialog>
+<dialog id="imageDialog" aria-labelledby="imageTitle"><header class="modal-head"><h2 id="imageTitle" style="font-size:16px">Screenshot</h2><button class="icon-btn" type="button" data-close="imageDialog" aria-label="Close image"><span data-icon="x"></span></button></header><div class="modal-body"><img id="fullImage" alt=""></div><p class="image-caption" id="fullCaption"></p></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toastText"></span><button type="button" id="toastUndo" hidden>Undo</button><button type="button" id="toastClose" aria-label="Dismiss message">×</button></div>
+<main class="print-root" id="printRoot" aria-hidden="true"></main>
+<noscript><p style="padding:24px">Please enable JavaScript to use Solved Once. The app works offline and makes no network requests.</p></noscript>
+<script>/* Solved Once · 1.0.0 · MIT License */
+'use strict';
+const SolvedCore = (() => {
+  const FORMAT = 'solved-once-notebook';
+  const VERSION = 1;
+  const CATEGORIES = ['Tech & devices', 'Home & appliances', 'Software', 'Everyday life', 'Other'];
+  const MAX_RECORDS = 500;
+  const MAX_BACKUP_BYTES = 50 * 1024 * 1024;
+  const MAX_IMAGES = 6;
+  const MAX_IMAGE_CHARS = 3 * 1024 * 1024;
+  const now = () => new Date().toISOString();
+  const uid = () => globalThis.crypto?.randomUUID?.() || ('fix-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12));
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
+  function text(value, label, limit, required = false) {
+    if (typeof value !== 'string' || value.length > limit) throw new Error(label + ' must be text, up to ' + limit.toLocaleString() + ' characters.');
+    const clean = value.trim();
+    if (required && !clean) throw new Error('Please add ' + label.toLowerCase() + '.');
+    return clean;
+  }
+  function date(value, label) {
+    if (typeof value !== 'string' || value.length > 40 || !Number.isFinite(Date.parse(value))) throw new Error(label + ' is not a valid date.');
+    return new Date(value).toISOString();
+  }
+  function id(value, label) {
+    if (typeof value !== 'string' || !/^[A-Za-z0-9_-]{1,100}$/.test(value)) throw new Error(label + ' has an invalid identifier.');
+    return value;
+  }
+  function list(value, label, max) {
+    if (!Array.isArray(value) || value.length > max) throw new Error(label + ' must contain at most ' + max + ' items.');
+    return value;
+  }
+  function validImage(value) {
+    if (typeof value !== 'string' || value.length > MAX_IMAGE_CHARS) throw new Error('An image is too large. Please use a smaller screenshot.');
+    const m = value.match(/^data:image\/(png|jpeg|webp);base64,([A-Za-z0-9+/]+={0,2})$/);
+    if (!m || m[2].length % 4 !== 0) throw new Error('Only embedded PNG, JPEG, and WebP images are supported.');
+    let bytes;
+    try { bytes = atob(m[2].slice(0, 48)); } catch { throw new Error('An image contains invalid data.'); }
+    const ok = m[1] === 'png' ? bytes.startsWith('\x89PNG\r\n\x1a\n') : m[1] === 'jpeg' ? bytes.startsWith('\xff\xd8\xff') : bytes.startsWith('RIFF') && bytes.slice(8, 12) === 'WEBP';
+    if (!ok) throw new Error('An image does not match its file type.');
+    return value;
+  }
+  function validateRecord(raw) {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('A fix is not a valid record.');
+    const steps = list(raw.steps, 'Solution steps', 30).map(s => ({id:id(s?.id,'Step'), text:text(s?.text,'Step',4000,true)}));
+    const stepIds = new Set(steps.map(s => s.id));
+    if (stepIds.size !== steps.length) throw new Error('Solution steps have duplicate identifiers.');
+    const attempts = list(raw.attempts, 'Attempts', 30).map(a => {
+      if (!['failed','partial','worked'].includes(a?.outcome)) throw new Error('An attempt has an invalid outcome.');
+      return {id:id(a.id,'Attempt'), text:text(a.text,'Attempt',4000,true), outcome:a.outcome};
+    });
+    if (new Set(attempts.map(a=>a.id)).size !== attempts.length) throw new Error('Attempts have duplicate identifiers.');
+    const images = list(raw.images, 'Screenshots', MAX_IMAGES).map(im => {
+      const stepId = typeof im?.stepId === 'string' ? im.stepId : '';
+      if (stepId && !stepIds.has(stepId)) throw new Error('A screenshot refers to a missing step.');
+      return {id:id(im?.id,'Screenshot'), name:text(im?.name,'Image name',200,true), caption:text(im?.caption,'Caption',300), stepId, data:validImage(im?.data)};
+    });
+    if (new Set(images.map(im=>im.id)).size !== images.length) throw new Error('Screenshots have duplicate identifiers.');
+    if (!CATEGORIES.includes(raw.category)) throw new Error('A fix has an unsupported category.');
+    if (!['open','solved'].includes(raw.status)) throw new Error('A fix has an unsupported status.');
+    const solution = text(raw.solution, 'Working solution', 12000);
+    if (raw.status === 'solved' && !solution && !steps.length) throw new Error('Add the working solution or at least one solution step before marking this solved.');
+    const tags = [...new Set(list(raw.tags,'Tags',8).map(t=>text(t,'Tag',40,true)))];
+    return {id:id(raw.id,'Fix'), title:text(raw.title,'A title',160,true), item:text(raw.item,'Item or device',160), category:raw.category, status:raw.status,
+      tags, problem:text(raw.problem,'Problem notes',12000), solution, attempts, steps, images, pinned:raw.pinned === true,
+      createdAt:date(raw.createdAt,'Created date'), updatedAt:date(raw.updatedAt,'Updated date')};
+  }
+  function blank() {
+    const t = now();
+    return {id:uid(),title:'',item:'',category:CATEGORIES[0],status:'open',tags:[],problem:'',solution:'',attempts:[],steps:[],images:[],pinned:false,createdAt:t,updatedAt:t};
+  }
+  function snapshot(records) {
+    return JSON.stringify({format:FORMAT,version:VERSION,exportedAt:now(),records},null,2);
+  }
+  function parseBackup(source) {
+    if (typeof source !== 'string' || new TextEncoder().encode(source).byteLength > MAX_BACKUP_BYTES) throw new Error('Choose a Solved Once backup smaller than 50 MB.');
+    let data;
+    try { data = JSON.parse(source); } catch { throw new Error('This file is not valid JSON. Choose a Solved Once .json backup.'); }
+    if (data?.format !== FORMAT || data.version !== VERSION) throw new Error('This is not a supported Solved Once backup (version 1).');
+    const records = list(data.records,'Fixes',MAX_RECORDS).map(validateRecord);
+    if (new Set(records.map(r=>r.id)).size !== records.length) throw new Error('The backup contains duplicate fix identifiers.');
+    return records;
+  }
+  function same(a,b) { return JSON.stringify(a) === JSON.stringify(b); }
+  function merge(current, incoming) {
+    const result=current.map(clone), byId = new Map(current.map(r=>[r.id,r]));
+    let added=0, skipped=0, conflicts=0;
+    for (const rec of incoming) {
+      const old=byId.get(rec.id);
+      if (!old) { result.push(clone(rec)); byId.set(rec.id,rec); added++; }
+      else if (same(old,rec)) skipped++;
+      else {
+        const fresh=clone(rec); fresh.id=uid(); fresh.title = (fresh.title.slice(0,137) + ' (backup copy)').slice(0,160);
+        result.push(fresh); conflicts++;
+      }
+    }
+    if (result.length > MAX_RECORDS) throw new Error('This merge would exceed 500 fixes. Export a backup and remove unused fixes first.');
+    if (new TextEncoder().encode(snapshot(result)).byteLength > MAX_BACKUP_BYTES) throw new Error('This merge would exceed the 50 MB notebook limit.');
+    return {records:result,added,skipped,conflicts};
+  }
+  function search(records, {query='',status='all',category='',pinned=false,sort='updated'}={}) {
+    const terms=query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+    return records.filter(r=>{
+      if (status!=='all' && r.status!==status || category && r.category!==category || pinned && !r.pinned) return false;
+      const body=[r.title,r.item,r.category,r.problem,r.solution,...r.tags,...r.attempts.map(a=>a.text),...r.steps.map(s=>s.text),...r.images.map(i=>i.caption+' '+i.name)].join(' ').toLocaleLowerCase();
+      return terms.every(t=>body.includes(t));
+    }).sort((a,b)=>sort==='title'?a.title.localeCompare(b.title):sort==='oldest'?a.updatedAt.localeCompare(b.updatedAt):b.updatedAt.localeCompare(a.updatedAt));
+  }
+  function plainCard(record) {
+    const lines=[record.title,record.item,record.category,'',record.status==='solved'?'SOLVED':'IN PROGRESS'];
+    if (record.problem) lines.push('','THE PROBLEM',record.problem);
+    if (record.solution || record.steps.length) lines.push('','WHAT WORKED',record.solution,...record.steps.map((s,i)=>(i+1)+'. '+s.text));
+    if (record.attempts.length) lines.push('','WHAT I TRIED',...record.attempts.map(a=>({failed:'Did not work',partial:'Partly worked',worked:'Worked'}[a.outcome])+': '+a.text));
+    if (record.images.length) lines.push('','SCREENSHOTS',...record.images.map(i=>i.caption || i.name),'(Images are included in the HTML card and JSON backup.)');
+    return lines.filter(x=>x!==undefined).join('\n');
+  }
+  function cardBody(r) {
+    const figure=im=>'<figure><img src="'+im.data+'" alt="'+esc(im.caption||im.name)+'"><figcaption>'+esc(im.caption||im.name)+'</figcaption></figure>';
+    return '<header><div class="brand">✓ &nbsp; SOLVED ONCE</div><span class="badge">'+(r.status==='solved'?'Solved':'In progress')+'</span><h1>'+esc(r.title)+'</h1><p class="meta">'+esc([r.item,r.category].filter(Boolean).join(' · '))+'</p></header>'+
+      (r.problem?'<section><h2>The problem</h2><p class="pre">'+esc(r.problem)+'</p></section>':'')+
+      (r.solution||r.steps.length?'<section class="solution"><h2>What worked</h2>'+(r.solution?'<p class="pre">'+esc(r.solution)+'</p>':'')+'<ol>'+r.steps.map(s=>'<li><p class="pre">'+esc(s.text)+'</p>'+r.images.filter(im=>im.stepId===s.id).map(figure).join('')+'</li>').join('')+'</ol></section>':'')+
+      (r.attempts.length?'<section><h2>What I tried</h2><ul class="attempts">'+r.attempts.map(a=>'<li><strong>'+({failed:'Did not work',partial:'Partly worked',worked:'Worked'}[a.outcome])+'</strong><p class="pre">'+esc(a.text)+'</p></li>').join('')+'</ul></section>':'')+
+      (r.images.some(im=>!im.stepId)?'<section><h2>Screenshots & photos</h2>'+r.images.filter(im=>!im.stepId).map(figure).join('')+'</section>':'')+
+      '<footer>Personal notes · Updated '+esc(new Date(r.updatedAt).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}))+'<br>Keep a copy of the steps that worked for you.</footer>';
+  }
+  const cardCSS='*{box-sizing:border-box}body{margin:0;background:#f3f1e9;color:#20392f;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:850px;margin:40px auto;background:#fffef9;padding:48px;border:1px solid #dedfd4;border-radius:16px}.brand{font-size:12px;letter-spacing:.16em;font-weight:800;margin-bottom:28px}.badge{display:inline-block;border:1px solid #b8cbb4;border-radius:30px;padding:3px 12px;font-size:12px}h1{font-size:34px;line-height:1.18;letter-spacing:-.035em;margin:16px 0}.meta,footer{color:#647268;font-size:13px}section{margin-top:30px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em}p{margin:8px 0}.pre{white-space:pre-wrap;overflow-wrap:anywhere}.solution{background:#edf2e6;padding:24px;border-radius:12px}ol{padding-left:24px}li{padding:5px 0}figure{margin:20px 0;break-inside:avoid}img{display:block;max-width:100%;max-height:520px;border:1px solid #d6ddd3;border-radius:8px;object-fit:contain}figcaption{font-size:12px;color:#5e6b62;margin-top:5px}.attempts{list-style:none;padding:0}.attempts li{border-bottom:1px solid #e0e4d9;padding:12px 0}.attempts strong{font-size:12px}footer{border-top:1px solid #e0e4d9;margin-top:32px;padding-top:20px}.toolbar{text-align:center;margin:20px}.toolbar button{padding:12px 18px;border:0;border-radius:8px;background:#214c3d;color:white;cursor:pointer;font:inherit}@media(max-width:600px){main{margin:0;padding:24px;border:0;border-radius:0}h1{font-size:28px}}@media print{@page{margin:15mm}body{background:white;font-size:11pt}main{border:0;padding:0;margin:0;max-width:none}.toolbar{display:none}h1{font-size:24pt}h2{break-after:avoid}.solution{background:#f2f5ee;print-color-adjust:exact}img{max-height:115mm}footer{font-size:9pt}}';
+  function cardHTML(record) {
+    const r=validateRecord(record);
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'; script-src \'unsafe-inline\'; base-uri \'none\'; form-action \'none\'"><title>'+esc(r.title)+' · Solved Once</title><style>'+cardCSS+'</style></head><body><div class="toolbar"><button onclick="window.print()">Print / Save as PDF</button></div><main>'+cardBody(r)+'</main></body></html>';
+  }
+  class Store {
+    constructor() {this.db=null;this.mode='memory';this.memory=[];this.onChange=null;}
+    async open() {
+      if (!globalThis.indexedDB) return;
+      try {
+        this.db=await new Promise((resolve,reject)=>{
+          const req=indexedDB.open('solved-once-v1',1); let finished=false;
+          const timeout=setTimeout(()=>{finished=true;reject(new Error('Storage timed out'));},4000);
+          req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('fixes'))db.createObjectStore('fixes',{keyPath:'id'});};
+          req.onsuccess=()=>{clearTimeout(timeout);if(finished)req.result.close();else{finished=true;resolve(req.result);}};
+          req.onerror=()=>{clearTimeout(timeout);finished=true;reject(req.error);};
+          req.onblocked=()=>{clearTimeout(timeout);finished=true;reject(new Error('Storage is blocked'));};
+        });
+        this.mode='browser';
+        this.db.onversionchange=()=>{this.db.close();this.db=null;this.mode='memory';this.onChange?.();};
+      } catch {this.db=null;this.mode='memory';}
+    }
+    async all() {
+      if(!this.db)return clone(this.memory);
+      return new Promise((resolve,reject)=>{
+        const tx=this.db.transaction('fixes','readonly');let rows=[];
+        const req=tx.objectStore('fixes').getAll();req.onsuccess=()=>{rows=req.result;};
+        tx.oncomplete=()=>{this.memory=clone(rows);resolve(rows);};tx.onerror=()=>reject(tx.error||new Error('Could not read saved fixes.'));tx.onabort=()=>reject(tx.error||new Error('Reading saved fixes was interrupted.'));
+      });
+    }
+    async write(records,removeIds=[]) {
+      if(!this.db){const map=new Map(this.memory.map(r=>[r.id,r]));removeIds.forEach(i=>map.delete(i));records.forEach(r=>map.set(r.id,clone(r)));this.memory=[...map.values()];return;}
+      await new Promise((resolve,reject)=>{
+        const tx=this.db.transaction('fixes','readwrite'), store=tx.objectStore('fixes');
+        removeIds.forEach(i=>store.delete(i));records.forEach(r=>store.put(r));
+        tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error||new Error('Saving failed.'));tx.onabort=()=>reject(tx.error||new Error('Saving was interrupted.'));
+      });
+      const map=new Map(this.memory.map(r=>[r.id,r]));removeIds.forEach(i=>map.delete(i));records.forEach(r=>map.set(r.id,clone(r)));this.memory=[...map.values()];
+    }
+  }
+  function samples() {
+    const make=(data)=>validateRecord({...blank(),...data});
+    return [
+      make({id:'sample-printer',title:'Printer keeps showing offline',item:'Home office printer',category:CATEGORIES[0],tags:['printer','wifi'],status:'solved',problem:'The printer was on, but the laptop said it was offline. Other devices could still print.',attempts:[{id:'p-a1',text:'Restarted the printer. It appeared briefly, then went offline again.',outcome:'failed'},{id:'p-a2',text:'Reconnected the laptop to the same home Wi-Fi network as the printer.',outcome:'worked'}],solution:'My laptop was connected to the guest network. Switching back to the main home network restored printing.',steps:[{id:'p-s1',text:'Check the Wi-Fi network on the laptop.'},{id:'p-s2',text:'Connect to the same home network used by the printer.'},{id:'p-s3',text:'Reopen the print dialog and send one test page.'}]}),
+      make({id:'sample-audio',title:'Video export has no sound',item:'Video editor',category:CATEGORIES[2],tags:['export','audio'],status:'solved',problem:'Sound played in the editing timeline, but the exported video was silent.',attempts:[{id:'a-a1',text:'Exported the same preset again. Still silent.',outcome:'failed'}],solution:'Audio export had been disabled in my preset. I enabled it and saved a corrected preset.',steps:[{id:'a-s1',text:'Open the export settings and check that audio is included.'},{id:'a-s2',text:'Export a short sample and play it in a separate video player.'},{id:'a-s3',text:'Save the corrected preset with a clear name.'}]}),
+      make({id:'sample-plant',title:'Plant dries out between waterings',item:'Living room plant',category:CATEGORIES[3],tags:['plants'],problem:'The soil feels dry sooner than it used to. I moved the plant last month.',attempts:[{id:'l-a1',text:'Moved the pot away from the warm air vent. Checking how quickly the soil dries this week.',outcome:'partial'}]})
+    ];
+  }
+  return {FORMAT,VERSION,CATEGORIES,MAX_RECORDS,MAX_BACKUP_BYTES,MAX_IMAGES,MAX_IMAGE_CHARS,now,uid,clone,esc,blank,validateRecord,parseBackup,snapshot,merge,search,plainCard,cardHTML,cardBody,cardCSS,Store,samples};
+})();
+if(typeof module!=='undefined'&&module.exports)module.exports=SolvedCore;
+</script>
+<script>'use strict';
+const SolvedApp = (() => {
+ const C=SolvedCore, $=id=>document.getElementById(id), e=C.esc;
+ const paths={check:'<path d="m5 12 4 4L19 6"/>',plus:'<path d="M12 5v14M5 12h14"/>',x:'<path d="m6 6 12 12M18 6 6 18"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',book:'<path d="M5 4h13a1 1 0 0 1 1 1v15H6a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2Z"/><path d="M3 16h16M8 4v12"/>',circleCheck:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',pin:'<path d="m16 3 5 5-5 2-2 5-5-5 5-2 2-5ZM10 14l-7 7"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',upload:'<path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 4 2.8c-.8.3-1 1-1 2M12 17h.01"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',wifiOff:'<path d="m3 3 18 18M2 8a16 16 0 0 1 3-2m5-2a16 16 0 0 1 12 4M5 12a11 11 0 0 1 4-2m6 0a11 11 0 0 1 4 2M8 16a6 6 0 0 1 8 0M12 20h.01"/>',heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/>',edit:'<path d="m14 5 5 5M4 20l5-1L20 8a2.8 2.8 0 0 0-4-4L5 15l-1 5Z"/>',trash:'<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/>',copy:'<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/>',print:'<path d="M7 8V3h10v5M7 17H3v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7h-4"/><path d="M7 14h10v7H7zM17 11h.01"/>',arrowLeft:'<path d="M20 12H4m6-6-6 6 6 6"/>',up:'<path d="m6 15 6-6 6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',device:'<rect x="4" y="3" width="16" height="13" rx="2"/><path d="M12 16v5M8 21h8"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/>'};
+ const icon=(name,cls='')=>'<svg class="'+cls+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(paths[name]||paths.file)+'</svg>';
+ const state={records:[],demo:false,samples:C.samples(),view:'all',category:'',query:'',sort:'updated',selected:null,draft:null,base:null,dirty:false,busy:false,imageBusy:false,follow:false,checked:new Set(),pendingIncoming:null,readError:false,confirmResolve:null,toastTimer:null,undo:null,channel:null};
+ const store=new C.Store();
+ function hydrate(root=document){root.querySelectorAll('[data-icon]').forEach(el=>{el.innerHTML=icon(el.dataset.icon);el.removeAttribute('data-icon');});}
+ function showError(id,message){$(id).textContent=message;$(id).hidden=!message;}
+ function toast(message,undo=null){clearTimeout(state.toastTimer);state.undo=undo;$('toastText').textContent=message;$('toastUndo').hidden=!undo;$('toast').hidden=false;state.toastTimer=setTimeout(()=>{$('toast').hidden=true;state.undo=null;},undo?15000:6500);}
+ const fmt=iso=>new Date(iso).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+ const formatBytes=n=>n<1024*1024?Math.max(1,Math.ceil(n/1024))+' KB':(n/(1024*1024)).toFixed(1)+' MB';
+ function activeRecords(){return state.demo?state.samples:state.records;}
+ function current(){return activeRecords().find(r=>r.id===state.selected);}
+ function updateStorage(){
+   const memory=store.mode!=='browser';
+   $('storagePill').innerHTML='<span class="dot"></span>'+(memory?'Session only':'Saved in this browser');
+   $('storageNotice').hidden=!memory && !state.readError;
+   $('storageMessage').textContent=state.readError?'This notebook could not be read. Reopen this file in the same browser, or restore a backup in a different browser profile. Existing records have not been changed.':memory?'Browser storage is unavailable. Your changes last only while this tab stays open. Export a backup before closing.':'';
+   $('newFix').disabled=state.readError;
+ }
+ function render(){
+   const all=activeRecords();
+   $('allCount').textContent=all.length;$('solvedCount').textContent=all.filter(r=>r.status==='solved').length;$('openCount').textContent=all.filter(r=>r.status==='open').length;$('pinnedCount').textContent=all.filter(r=>r.pinned).length;
+   document.querySelectorAll('[data-view]').forEach(b=>{const active=b.dataset.view===state.view;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+   $('categoryNav').innerHTML=C.CATEGORIES.map(cat=>'<button type="button" data-category="'+e(cat)+'" class="'+(state.category===cat?'active':'')+'" aria-pressed="'+(state.category===cat)+'"><span class="dot"></span>'+e(cat)+'</button>').join('');
+   $('viewTitle').textContent=state.demo?'Example notebook':({all:'Your fix notebook',solved:'The things you solved',open:'Still figuring it out',pinned:'Close at hand'}[state.view]);
+   $('viewSubtitle').textContent=state.demo?'A few fictional fixes to show you around.':({all:'A home for the things you figured out.',solved:'Your working solutions, ready for next time.',open:'Keep track of what you’ve tried so far.',pinned:'Your most useful fixes, one click away.'}[state.view]);
+   $('demoNotice').hidden=!state.demo;
+   const filtered=Boolean(state.query||state.category||state.view!=='all');
+   $('activeFilter').hidden=!filtered;$('filterText').textContent=[state.category,state.query?'Search: '+state.query:'',state.view!=='all'?({solved:'Solved',open:'In progress',pinned:'Pinned'}[state.view]):''].filter(Boolean).join(' · ');
+   const records=C.search(all,{query:state.query,category:state.category,status:['solved','open'].includes(state.view)?state.view:'all',pinned:state.view==='pinned',sort:state.sort});
+   $('welcome').hidden=all.length>0||filtered||state.readError;
+   $('board').hidden=!$('welcome').hidden;
+   $('resultCount').textContent=records.length+' '+(records.length===1?'fix':'fixes');
+   if(!records.some(r=>r.id===state.selected)){state.selected=records[0]?.id||null;state.follow=false;state.checked.clear();}
+   $('fixList').innerHTML=records.length?records.map(r=>'<button class="fix-card '+(r.id===state.selected?'selected':'')+'" type="button" data-fix="'+e(r.id)+'" aria-pressed="'+(r.id===state.selected)+'"><div class="fix-card-head"><span class="badge '+(r.status==='open'?'open':'')+'">'+icon(r.status==='solved'?'check':'clock')+(r.status==='solved'?'Solved':'In progress')+'</span>'+(r.pinned?icon('pin','pin-icon'):'')+'</div><h3>'+e(r.title)+'</h3><p class="item">'+e(r.item||r.category)+'</p><p class="excerpt">'+e(r.solution||r.problem||'Add the details as you figure it out.')+'</p><div class="fix-card-foot"><span>'+e(fmt(r.updatedAt))+'</span><span class="mini-icons">'+(r.steps.length?icon('book')+r.steps.length+' steps':'')+(r.images.length?' &nbsp; '+icon('image')+r.images.length:'')+'</span></div></button>').join(''):'<div class="nothing">'+icon('search')+'<h3>No fixes here yet.</h3><p>'+(filtered?'Try another search or clear your filters.':'Add a fix to start your notebook.')+'</p>'+(filtered?'<button class="btn secondary small" data-action="clear" type="button">Clear filters</button>':'')+'</div>';
+   renderDetail();updateStorage();
+   $('footerStatus').textContent=state.demo?'Examples stay separate from your saved fixes.':state.records.length?state.records.length+' saved '+(state.records.length===1?'fix':'fixes')+' · Remember to keep a backup.':'Free, offline & yours.';
+ }
+ function gallery(images){return images.length?'<div class="gallery">'+images.map(im=>'<figure><button type="button" data-image="'+e(im.id)+'" aria-label="Enlarge '+e(im.caption||im.name)+'"><img src="'+im.data+'" alt="'+e(im.caption||im.name)+'" loading="lazy"></button><figcaption>'+e(im.caption||im.name)+'</figcaption></figure>').join('')+'</div>':'';}
+ function renderDetail(){
+   const r=current();
+   if(!r){$('detail').innerHTML='<div class="nothing" style="padding:100px 25px">'+icon('book')+'<h3>A place for your next answer.</h3><p>Select a fix to read its notes and solution.</p></div>';return;}
+   const solution=r.solution||r.steps.length;
+   const completed=state.checked.size;
+   $('detail').innerHTML='<div class="detail-inner"><div class="detail-toolbar"><div><button type="button" class="mobile-back" data-action="back">'+icon('arrowLeft')+'All fixes</button><span class="badge '+(r.status==='open'?'open':'')+'">'+icon(r.status==='solved'?'check':'clock')+(r.status==='solved'?'Solved':'In progress')+'</span></div><div class="detail-tools">'+(state.demo?'<button type="button" class="btn secondary small" data-action="copyExample">'+icon('plus')+'Copy example</button>':'<button class="icon-btn '+(r.pinned?'is-pinned':'')+'" type="button" data-action="pin" aria-label="'+(r.pinned?'Unpin':'Pin')+' fix" aria-pressed="'+r.pinned+'">'+icon('pin')+'</button><button class="btn secondary small" type="button" data-action="edit">'+icon('edit')+'Edit</button><button class="icon-btn danger" type="button" data-action="delete" aria-label="Delete fix">'+icon('trash')+'</button>')+'</div></div><h2>'+e(r.title)+'</h2><div class="detail-meta">'+icon('device')+e([r.item,r.category].filter(Boolean).join(' · '))+'</div>'+(r.tags.length?'<div class="tag-list">'+r.tags.map(t=>'<span class="tag">'+e(t)+'</span>').join('')+'</div>':'')+(r.problem?'<section class="problem-box"><h3 class="section-label">The problem</h3><p class="prose">'+e(r.problem)+'</p></section>':'')+
+   (solution?'<section class="solution-box"><h3 class="solution-heading">'+icon('circleCheck')+'What worked</h3>'+(r.solution?'<p class="prose">'+e(r.solution)+'</p>':'')+(r.steps.length?'<ol class="step-list '+(state.follow?'follow':'')+'">'+r.steps.map((s,i)=>'<li>'+(state.follow?'<button type="button" class="steps-check '+(state.checked.has(s.id)?'done':'')+'" data-check="'+e(s.id)+'" aria-pressed="'+state.checked.has(s.id)+'" aria-label="'+(state.checked.has(s.id)?'Uncheck':'Complete')+' step '+(i+1)+'">'+(state.checked.has(s.id)?icon('check'):i+1)+'</button>':'')+'<div class="'+(state.checked.has(s.id)?'completed':'')+'"><p class="prose">'+e(s.text)+'</p>'+gallery(r.images.filter(im=>im.stepId===s.id))+'</div></li>').join('')+'</ol><div class="followbar"><span>'+(state.follow?completed+' of '+r.steps.length+' complete'+(completed===r.steps.length?' · All done!':''):'Ready for the next time this happens.')+'</span><button type="button" data-action="follow">'+(state.follow?'Finish following':'Follow steps')+'</button></div>':'')+'</section>':'<section class="solution-box"><h3 class="solution-heading">'+icon('clock')+'Still figuring it out</h3><p class="prose">Keep your attempts here. Add the solution when you find what works.</p></section>')+
+   (r.attempts.length?'<details class="attempt-section" '+(r.status==='open'?'open':'')+'><summary>What I tried <span class="badge '+(r.status==='open'?'open':'')+'">'+r.attempts.length+'</span></summary>'+r.attempts.map(a=>'<div class="attempt-row"><span class="outcome-dot '+a.outcome+'">'+({failed:'×',partial:'~',worked:'✓'}[a.outcome])+'</span><div><strong>'+({failed:'Did not work',partial:'Partly worked',worked:'Worked'}[a.outcome])+'</strong><p class="prose">'+e(a.text)+'</p></div></div>').join('')+'</details>':'')+
+   (r.images.some(im=>!im.stepId)?'<section style="margin-top:25px"><h3 class="section-label">Screenshots & photos</h3>'+gallery(r.images.filter(im=>!im.stepId))+'</section>':'')+'</div><footer class="detail-footer"><span class="updated">Updated '+e(fmt(r.updatedAt))+'</span><div class="detail-footer-actions"><button class="btn ghost small" type="button" data-action="copyText" title="Copy these notes as text">'+icon('copy')+'Copy</button><button class="btn ghost small" type="button" data-action="print">'+icon('print')+'Print</button><button class="btn secondary small" type="button" data-action="saveCard">'+icon('download')+'Save card</button></div></footer>';
+ }
+ function resetFilters(){state.view='all';state.category='';state.query='';$('searchInput').value='';state.follow=false;state.checked.clear();$('board').classList.remove('detail-open');render();}
+ function selectFix(id){state.selected=id;state.follow=false;state.checked.clear();render();$('board').classList.add('detail-open');if(window.innerWidth<931)$('board').scrollIntoView({block:'start',behavior:'auto'});}
+ function toggleDemo(value){state.demo=value;state.selected=null;resetFilters();}
+ function ask(title,message,yes='Continue',danger=false){
+   if(state.confirmResolve)return Promise.resolve(false);
+   $('confirmTitle').textContent=title;$('confirmText').textContent=message;$('confirmYes').textContent=yes;$('confirmYes').className='btn '+(danger?'danger':'primary');
+   $('confirmDialog').showModal();$('confirmNo').focus();return new Promise(resolve=>state.confirmResolve=resolve);
+ }
+ function finishConfirm(ok){const resolve=state.confirmResolve;state.confirmResolve=null;$('confirmDialog').close();resolve?.(ok);}
+ function updateDraftStatus(){state.dirty=true;$('draftStatus').textContent='Unsaved changes';}
+ function readDraft(){
+   if(!state.draft)return;
+   const d=state.draft;
+   d.title=$('fixTitle').value;d.item=$('fixItem').value;d.category=$('fixCategory').value;d.tags=$('fixTags').value.split(',').map(t=>t.trim()).filter(Boolean);d.problem=$('fixProblem').value;d.solution=$('fixSolution').value;d.status=$('fixSolved').checked?'solved':'open';
+   d.attempts=[...$('attemptEditor').querySelectorAll('[data-attempt-row]')].map(row=>({id:row.dataset.attemptRow,text:row.querySelector('textarea').value,outcome:row.querySelector('select').value}));
+   d.steps=[...$('stepEditor').querySelectorAll('[data-step-row]')].map(row=>({id:row.dataset.stepRow,text:row.querySelector('textarea').value}));
+   $('imageEditor').querySelectorAll('[data-edit-image]').forEach(row=>{const im=d.images.find(i=>i.id===row.dataset.editImage);if(im){im.caption=row.querySelector('input').value;im.stepId=row.querySelector('select').value;}});
+ }
+ function renderRows(){
+   const d=state.draft;if(!d)return;
+   $('attemptEditor').innerHTML=d.attempts.map((a,i)=>'<div class="editor-row" data-attempt-row="'+a.id+'"><div class="field"><label for="attempt-'+a.id+'">Attempt '+(i+1)+'</label><textarea id="attempt-'+a.id+'" maxlength="4000" placeholder="What did you try? What happened?">'+e(a.text)+'</textarea></div><select class="outcome-select" aria-label="Outcome of attempt '+(i+1)+'">'+['failed','partial','worked'].map(v=>'<option value="'+v+'" '+(v===a.outcome?'selected':'')+'>'+({failed:'Did not work',partial:'Partly worked',worked:'Worked'}[v])+'</option>').join('')+'</select><div class="row-controls"><button class="icon-btn danger" type="button" data-remove-attempt="'+a.id+'" aria-label="Remove attempt '+(i+1)+'">'+icon('x')+'</button></div></div>').join('');
+   $('stepEditor').innerHTML=d.steps.map((s,i)=>'<div class="editor-row step-row" data-step-row="'+s.id+'"><span class="step-number">'+String(i+1).padStart(2,'0')+'</span><div class="field"><label for="step-'+s.id+'">Step '+(i+1)+'</label><textarea id="step-'+s.id+'" maxlength="4000" placeholder="Describe one action to follow.">'+e(s.text)+'</textarea></div><div class="row-controls"><button class="icon-btn" type="button" data-move-step="'+s.id+'" data-direction="-1" aria-label="Move step '+(i+1)+' up" '+(i===0?'disabled':'')+'>'+icon('up')+'</button><button class="icon-btn" type="button" data-move-step="'+s.id+'" data-direction="1" aria-label="Move step '+(i+1)+' down" '+(i===d.steps.length-1?'disabled':'')+'>'+icon('down')+'</button><button class="icon-btn danger" type="button" data-remove-step="'+s.id+'" aria-label="Remove step '+(i+1)+'">'+icon('x')+'</button></div></div>').join('');
+   $('noAttempts').hidden=!!d.attempts.length;$('noSteps').hidden=!!d.steps.length;$('addAttempt').disabled=d.attempts.length>=30;$('addStep').disabled=d.steps.length>=30;
+   renderEditImages();
+ }
+ function renderEditImages(){
+   const d=state.draft;if(!d)return;
+   $('imageEditor').innerHTML=d.images.map(im=>'<div class="edit-image" data-edit-image="'+im.id+'"><div class="edit-image-preview"><img src="'+im.data+'" alt="'+e(im.caption||im.name)+'"><button class="icon-btn danger remove-image" type="button" data-remove-image="'+im.id+'" aria-label="Remove '+e(im.name)+'">'+icon('x')+'</button></div><div class="edit-image-inputs"><div class="field"><label for="caption-'+im.id+'">Caption</label><input id="caption-'+im.id+'" maxlength="300" value="'+e(im.caption)+'" placeholder="'+e(im.name)+'"></div><div class="field"><label for="image-step-'+im.id+'">Show with</label><select id="image-step-'+im.id+'"><option value="">General screenshots</option>'+d.steps.map((s,i)=>'<option value="'+s.id+'" '+(s.id===im.stepId?'selected':'')+'>Step '+(i+1)+'</option>').join('')+'</select></div></div></div>').join('');
+ }
+ function openEditor(record=null,copy=false){
+   if(state.readError){toast('The saved notebook could not be read. Reopen it before editing.');return;}
+   if($('editor').open)return;
+   state.draft=record?C.clone(record):C.blank();state.base=record&&!copy?C.clone(record):null;
+   if(copy){state.draft.id=C.uid();state.draft.createdAt=C.now();state.draft.updatedAt=C.now();state.draft.pinned=false;}
+   const d=state.draft;state.dirty=false;
+   $('editorTitle').textContent=copy?'Copy example to your notebook':record?'Edit fix':'Add a fix';
+   $('fixTitle').value=d.title;$('fixItem').value=d.item;$('fixCategory').value=d.category;$('fixTags').value=d.tags.join(', ');$('fixProblem').value=d.problem;$('fixSolution').value=d.solution;$('fixSolved').checked=d.status==='solved';
+   showError('formError','');showError('imageError','');$('draftStatus').textContent='Saved only when you click Save fix.';
+   renderRows();$('editor').showModal();$('fixTitle').focus();
+ }
+ async function closeEditor(){
+   if(state.busy||state.imageBusy){toast('Please wait for the current operation to finish.');return;}
+   if(state.dirty&&!await ask('Leave without saving?','Your changes to this fix have not been saved.','Discard changes',true))return;
+   state.dirty=false;state.draft=null;state.base=null;$('editor').close();
+ }
+ function communicate(){try{state.channel?.postMessage({changed:true});}catch{}}
+ async function refresh(){
+   try{const records=await store.all();state.records=records.map(C.validateRecord);state.readError=false;render();}
+   catch(err){state.readError=true;render();toast('Could not read the notebook: '+err.message);}
+ }
+ async function saveFix(){
+   if(state.busy||state.imageBusy||!state.draft)return;
+   readDraft();showError('formError','');
+   let d;
+   try{
+     const raw=C.clone(state.draft);raw.attempts=raw.attempts.filter(a=>a.text.trim());raw.steps=raw.steps.filter(s=>s.text.trim());const ids=new Set(raw.steps.map(s=>s.id));raw.images.forEach(im=>{if(!ids.has(im.stepId))im.stepId='';});raw.updatedAt=C.now();d=C.validateRecord(raw);
+   }catch(err){showError('formError',err.message);$('formError').scrollIntoView({block:'nearest'});return;}
+   state.busy=true;$('saveFix').disabled=true;$('fixForm').inert=true;
+   try{
+     const latest=(await store.all()).map(C.validateRecord),old=latest.find(r=>r.id===d.id);
+     if(state.base && (!old || JSON.stringify(old)!==JSON.stringify(state.base))){
+       const keep=await ask('This fix changed in another tab.','Save your edits as a separate copy so the other version stays intact?','Save as a copy');
+       if(!keep)return;d.id=C.uid();d.title=(d.title.slice(0,144)+' (edited copy)').slice(0,160);d.createdAt=C.now();
+     }
+     const next=latest.filter(r=>r.id!==d.id).concat([d]);
+     if(next.length>C.MAX_RECORDS)throw new Error('This notebook is limited to 500 fixes. Export a backup and remove an unused fix first.');
+     if(new TextEncoder().encode(C.snapshot(next)).byteLength>C.MAX_BACKUP_BYTES)throw new Error('The notebook would exceed 50 MB. Use fewer images or remove unused fixes after making a backup.');
+     await store.write([d]);state.records=next;state.dirty=false;state.draft=null;state.base=null;$('editor').close();state.demo=false;state.selected=d.id;state.follow=false;state.checked.clear();state.view='all';state.category='';state.query='';$('searchInput').value='';render();$('board').classList.add('detail-open');communicate();toast(store.mode==='browser'?'Fix saved in this browser.':'Saved for this session. Export a backup before closing.');
+   }catch(err){showError('formError','Could not save: '+err.message+' Your draft is still open.');}
+   finally{state.busy=false;$('saveFix').disabled=false;$('fixForm').inert=false;}
+ }
+ async function togglePin(){
+   const selected=current();if(!selected||state.demo||state.busy)return;
+   state.busy=true;
+   try{const latest=await store.all(),r=latest.find(r=>r.id===selected.id);if(!r)throw new Error('This fix was removed in another tab.');r.pinned=!r.pinned;await store.write([r]);state.records=latest;render();communicate();toast(r.pinned?'Pinned to keep it close.':'Fix unpinned.');}catch(err){toast(err.message);}finally{state.busy=false;}
+ }
+ async function deleteFix(){
+   const selected=current();if(!selected||state.demo||state.busy)return;
+   if(!await ask('Delete this fix?','“'+selected.title+'” and its screenshots will be removed from this browser.','Delete fix',true))return;
+   state.busy=true;
+   try{const latest=await store.all(),deleted=latest.find(r=>r.id===selected.id);await store.write([],[selected.id]);state.records=latest.filter(r=>r.id!==selected.id);render();communicate();toast('Fix deleted.',deleted?async()=>{
+     try{const existing=await store.all(),copy=C.clone(deleted);if(existing.some(r=>r.id===copy.id))copy.id=C.uid();if(existing.length>=C.MAX_RECORDS)throw new Error('The notebook is full.');await store.write([copy]);state.records=existing.concat(copy);state.selected=copy.id;render();communicate();toast('Fix restored.');}catch(err){toast('Could not undo: '+err.message);}
+   }:null);}catch(err){toast('Could not delete: '+err.message);}finally{state.busy=false;}
+ }
+ function download(blob,filename){
+   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.style.display='none';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
+ }
+ const safeName=s=>s.normalize('NFKC').replace(/[<>:"/\\|?*\u0000-\u001f]/g,'-').replace(/[. ]+$/g,'').slice(0,90)||'solved-once-fix';
+ function saveCard(){const r=current();if(!r)return;download(new Blob([C.cardHTML(r)],{type:'text/html;charset=utf-8'}),safeName(r.title)+'-fix.html');toast('Instruction card sent to your browser’s downloads.');}
+ async function copyText(){
+   const r=current();if(!r)return;const txt=C.plainCard(r);
+   try{if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(txt);else throw new Error('Use fallback');toast('Fix copied as text.');}
+   catch{const area=document.createElement('textarea');area.value=txt;area.style.position='fixed';area.style.left='-9999px';document.body.append(area);area.focus();area.select();let ok=false;try{ok=document.execCommand('copy');}catch{}area.remove();toast(ok?'Fix copied as text.':'Clipboard access is unavailable. Use Save card or Print instead.');}
+ }
+ async function printFix(){
+   const r=current();if(!r)return;$('printRoot').innerHTML=C.cardBody(r);
+   const images=[...$('printRoot').querySelectorAll('img')];
+   await Promise.allSettled(images.map(im=>typeof im.decode==='function'?im.decode():Promise.resolve()));
+   window.print();
+ }
+ function viewImage(id){const im=current()?.images.find(i=>i.id===id);if(!im)return;$('imageTitle').textContent=im.name;$('fullImage').src=im.data;$('fullImage').alt=im.caption||im.name;$('fullCaption').textContent=im.caption||im.name;$('imageDialog').showModal();}
+ async function prepareImage(file){
+   if(!['image/png','image/jpeg','image/webp'].includes(file.type))throw new Error('Use PNG, JPG, or WebP images.');
+   if(file.size>15*1024*1024)throw new Error('This image is larger than 15 MB.');
+   let img,url;
+   try{
+     if(typeof createImageBitmap==='function'){try{img=await createImageBitmap(file);}catch{}}
+     if(!img){url=URL.createObjectURL(file);img=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('This image could not be read.'));im.src=url;});}
+     const w=img.width||img.naturalWidth,h=img.height||img.naturalHeight;if(!w||!h||w*h>40000000)throw new Error('Use an image smaller than 40 megapixels.');
+     const ratio=Math.min(1,1600/Math.max(w,h)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(w*ratio));canvas.height=Math.max(1,Math.round(h*ratio));
+     const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Image processing is unavailable.');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+     let data=canvas.toDataURL('image/webp',.9);if(data.length>C.MAX_IMAGE_CHARS)data=canvas.toDataURL('image/jpeg',.82);if(data.length>C.MAX_IMAGE_CHARS)throw new Error('The image is still too large. Try a smaller screenshot.');
+     return {id:C.uid(),name:(file.name||'Pasted screenshot').slice(0,200),caption:'',stepId:'',data};
+   }finally{img?.close?.();if(url)URL.revokeObjectURL(url);}
+ }
+ async function addImages(files){
+   if(!state.draft||state.imageBusy)return;readDraft();showError('imageError','');
+   const incoming=[...files];if(!incoming.length)return;
+   state.imageBusy=true;$('saveFix').disabled=true;$('uploadText').textContent='Adding images…';
+   const errors=[];
+   try{for(const f of incoming){if(state.draft.images.length>=C.MAX_IMAGES){errors.push('This fix already has 6 images. Remove one to add another.');break;}try{const im=await prepareImage(f);state.draft.images.push(im);updateDraftStatus();}catch(err){errors.push((f.name?f.name+': ':'')+err.message);}}readDraft();renderEditImages();showError('imageError',errors.join(' '));}
+   finally{state.imageBusy=false;$('saveFix').disabled=false;$('uploadText').textContent='Click to add, drop here, or paste an image';$('imageInput').value='';}
+ }
+ function openBackup(){
+   $('backupCount').textContent=state.records.length;$('backupSize').textContent=formatBytes(new TextEncoder().encode(C.snapshot(state.records)).byteLength);showError('backupError','');state.pendingIncoming=null;$('restoreSummary').hidden=true;
+   let last='';try{last=localStorage.getItem('solved-once-last-backup')||'';}catch{}
+   $('lastBackup').textContent=last&&Number.isFinite(Date.parse(last))?'Last export requested: '+new Date(last).toLocaleString():'No backup export recorded in this browser yet.';
+   $('exportBackup').disabled=state.readError;$('chooseBackup').disabled=state.readError;if(!$('backupDialog').open)$('backupDialog').showModal();
+ }
+ async function exportBackup(){
+   try{const records=(await store.all()).map(C.validateRecord);download(new Blob([C.snapshot(records)],{type:'application/json'}),'SolvedOnce-backup-'+new Date().toISOString().slice(0,10)+'.json');try{localStorage.setItem('solved-once-last-backup',C.now());}catch{}$('lastBackup').textContent='Export requested just now. Check your browser’s downloads.';toast('Backup sent to your browser’s downloads.');}catch(err){showError('backupError','Could not export: '+err.message);}
+ }
+ async function previewBackup(file){
+   if(!file)return;showError('backupError','');state.pendingIncoming=null;$('restoreSummary').hidden=true;
+   try{if(file.size>C.MAX_BACKUP_BYTES)throw new Error('Choose a backup smaller than 50 MB.');const incoming=C.parseBackup(await file.text()),latest=(await store.all()).map(C.validateRecord),plan=C.merge(latest,incoming);state.pendingIncoming=incoming;$('restoreText').textContent=plan.added+' new fixes · '+plan.skipped+' identical fixes skipped · '+plan.conflicts+' changed versions added as separate copies. Your existing fixes will stay.';$('confirmRestore').disabled=plan.added+plan.conflicts===0;$('restoreSummary').hidden=false;}
+   catch(err){showError('backupError',err.message);}finally{$('backupInput').value='';}
+ }
+ async function restoreBackup(){
+   if(!state.pendingIncoming||state.busy)return;state.busy=true;$('confirmRestore').disabled=true;
+   try{const latest=(await store.all()).map(C.validateRecord),plan=C.merge(latest,state.pendingIncoming),ids=new Set(latest.map(r=>r.id));await store.write(plan.records.filter(r=>!ids.has(r.id)));state.records=plan.records;state.pendingIncoming=null;$('restoreSummary').hidden=true;state.demo=false;resetFilters();$('backupCount').textContent=state.records.length;$('backupSize').textContent=formatBytes(new TextEncoder().encode(C.snapshot(state.records)).byteLength);communicate();toast('Merged '+(plan.added+plan.conflicts)+' fixes. Existing fixes kept.');}
+   catch(err){showError('backupError','Nothing was merged: '+err.message);}finally{state.busy=false;$('confirmRestore').disabled=false;}
+ }
+ async function action(name){
+   switch(name){
+    case 'new':openEditor();break;case 'edit':openEditor(current());break;case 'copyExample':openEditor(current(),true);break;
+    case 'delete':await deleteFix();break;case 'pin':await togglePin();break;case 'copyText':await copyText();break;case 'print':await printFix();break;case 'saveCard':saveCard();break;
+    case 'follow':state.follow=!state.follow;state.checked.clear();renderDetail();break;case 'back':$('board').classList.remove('detail-open');break;
+    case 'backup':openBackup();break;case 'help':$('helpDialog').showModal();break;case 'demo':toggleDemo(true);break;case 'clear':resetFilters();break;
+   }
+ }
+ document.addEventListener('click',async event=>{
+   const b=event.target.closest('button');if(!b||b.disabled)return;
+   if(b.dataset.action){await action(b.dataset.action);return;}
+   if(b.dataset.close){$(b.dataset.close).close();return;}
+   if(b.dataset.view){state.view=b.dataset.view;state.selected=null;state.follow=false;state.checked.clear();$('board').classList.remove('detail-open');render();return;}
+   if(b.dataset.category){state.category=state.category===b.dataset.category?'':b.dataset.category;state.selected=null;render();return;}
+   if(b.dataset.fix){selectFix(b.dataset.fix);return;}
+   if(b.dataset.image){viewImage(b.dataset.image);return;}
+   if(b.dataset.check){const id=b.dataset.check;state.checked.has(id)?state.checked.delete(id):state.checked.add(id);renderDetail();$('detail').querySelector('[data-check="'+id+'"]')?.focus();return;}
+   if(state.draft){
+     if(b.dataset.removeAttempt){readDraft();state.draft.attempts=state.draft.attempts.filter(a=>a.id!==b.dataset.removeAttempt);renderRows();updateDraftStatus();$('addAttempt').focus();}
+     if(b.dataset.removeStep){readDraft();state.draft.steps=state.draft.steps.filter(s=>s.id!==b.dataset.removeStep);state.draft.images.forEach(im=>{if(im.stepId===b.dataset.removeStep)im.stepId='';});renderRows();updateDraftStatus();$('addStep').focus();}
+     if(b.dataset.moveStep){readDraft();const steps=state.draft.steps,i=steps.findIndex(s=>s.id===b.dataset.moveStep),j=i+Number(b.dataset.direction);if(j>=0&&j<steps.length){[steps[i],steps[j]]=[steps[j],steps[i]];renderRows();updateDraftStatus();$('step-'+b.dataset.moveStep)?.focus();}}
+     if(b.dataset.removeImage){readDraft();state.draft.images=state.draft.images.filter(im=>im.id!==b.dataset.removeImage);renderEditImages();updateDraftStatus();$('uploadArea').focus();}
+   }
+ });
+ $('newFix').addEventListener('click',()=>openEditor());
+ $('leaveDemo').addEventListener('click',()=>toggleDemo(false));
+ $('helpExamples').addEventListener('click',()=>{$('helpDialog').close();toggleDemo(true);});
+ $('searchInput').addEventListener('input',()=>{state.query=$('searchInput').value;state.selected=null;$('board').classList.remove('detail-open');render();});
+ $('sortInput').addEventListener('change',()=>{state.sort=$('sortInput').value;render();});$('clearFilters').addEventListener('click',resetFilters);
+ $('fixForm').addEventListener('input',()=>{if(state.draft)updateDraftStatus();});$('fixForm').addEventListener('change',()=>{if(state.draft)updateDraftStatus();});
+ $('fixForm').addEventListener('submit',event=>{event.preventDefault();saveFix();});$('closeEditor').addEventListener('click',closeEditor);$('cancelEditor').addEventListener('click',closeEditor);
+ $('editor').addEventListener('cancel',event=>{event.preventDefault();closeEditor();});
+ $('addAttempt').addEventListener('click',()=>{readDraft();if(state.draft.attempts.length>=30)return;const id=C.uid();state.draft.attempts.push({id,text:'',outcome:'failed'});renderRows();updateDraftStatus();$('attempt-'+id).focus();});
+ $('addStep').addEventListener('click',()=>{readDraft();if(state.draft.steps.length>=30)return;const id=C.uid();state.draft.steps.push({id,text:''});renderRows();updateDraftStatus();$('step-'+id).focus();});
+ $('confirmYes').addEventListener('click',()=>finishConfirm(true));$('confirmNo').addEventListener('click',()=>finishConfirm(false));$('confirmDialog').addEventListener('cancel',event=>{event.preventDefault();finishConfirm(false);});
+ $('uploadArea').addEventListener('click',()=>{if(!state.imageBusy)$('imageInput').click();});$('uploadArea').addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(!state.imageBusy)$('imageInput').click();}});
+ $('imageInput').addEventListener('change',()=>addImages($('imageInput').files));
+ $('uploadArea').addEventListener('dragover',event=>{event.preventDefault();$('uploadArea').classList.add('drag');});$('uploadArea').addEventListener('dragleave',()=>$('uploadArea').classList.remove('drag'));
+ $('uploadArea').addEventListener('drop',event=>{event.preventDefault();event.stopPropagation();$('uploadArea').classList.remove('drag');addImages(event.dataTransfer.files);});
+ document.addEventListener('dragover',event=>{if([...event.dataTransfer?.types||[]].includes('Files'))event.preventDefault();});document.addEventListener('drop',event=>{if([...event.dataTransfer?.types||[]].includes('Files')){event.preventDefault();toast('Open a fix and drop images in its screenshot area.');}});
+ $('editor').addEventListener('paste',event=>{const files=[...(event.clipboardData?.items||[])].filter(i=>i.kind==='file'&&i.type.startsWith('image/')).map(i=>i.getAsFile()).filter(Boolean);if(files.length){event.preventDefault();addImages(files);}});
+ $('exportBackup').addEventListener('click',exportBackup);$('chooseBackup').addEventListener('click',()=>$('backupInput').click());$('backupInput').addEventListener('change',()=>previewBackup($('backupInput').files[0]));$('confirmRestore').addEventListener('click',restoreBackup);$('cancelRestore').addEventListener('click',()=>{state.pendingIncoming=null;$('restoreSummary').hidden=true;});
+ $('toastClose').addEventListener('click',()=>{clearTimeout(state.toastTimer);$('toast').hidden=true;state.undo=null;});$('toastUndo').addEventListener('click',async()=>{const undo=state.undo;state.undo=null;$('toast').hidden=true;await undo?.();});
+ document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'&&!document.querySelector('dialog[open]')){event.preventDefault();$('searchInput').focus();$('searchInput').select();}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='s'&&$('editor').open&&!$('confirmDialog').open){event.preventDefault();saveFix();}});
+ window.addEventListener('beforeunload',event=>{if(state.dirty||state.imageBusy||state.busy||(store.mode!=='browser'&&state.records.length)){event.preventDefault();event.returnValue='';}});
+ window.addEventListener('focus',()=>{if(!state.draft&&!state.busy&&!state.demo)refresh();});
+ window.addEventListener('afterprint',()=>{$('printRoot').innerHTML='';});
+ store.onChange=()=>{updateStorage();toast('Storage closed. Export a backup before leaving this tab.');};
+ const ready=(async()=>{
+   hydrate();$('fixCategory').innerHTML=C.CATEGORIES.map(cat=>'<option>'+e(cat)+'</option>').join('');
+   await store.open();await refresh();
+   try{state.channel=new BroadcastChannel('solved-once-changes');state.channel.onmessage=()=>{if(!state.draft&&!state.busy)refresh();};}catch{}
+ })();
+ return {state,store,ready,render,openEditor,saveFix,closeEditor,addImages,prepareImage,exportBackup,previewBackup,restoreBackup,selectFix,toggleDemo,saveCard,deleteFix,readDraft,renderRows,formatBytes};
+})();
+</script>
+</body>
+</html>
